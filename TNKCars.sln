@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNKCars.Core", "TNKCars.Core\TNKCars.Core.csproj", "{F4505CBE-3A41-430B-B2A3-DD20DC2E8A65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNKCars.Client", "TNKCars.Client\TNKCars.Client.csproj", "{F4505CBE-3A41-430B-B2A3-DD20DC2E8A65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNKCars.DataAccess", "TNKCars.DataAccess\TNKCars.DataAccess.csproj", "{C3A987CB-4FCA-494C-9CB9-AB19E91FC492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TNKCars.DataAccess", "TNKCars.DataAccess\TNKCars.DataAccess.csproj", "{C3A987CB-4FCA-494C-9CB9-AB19E91FC492}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
