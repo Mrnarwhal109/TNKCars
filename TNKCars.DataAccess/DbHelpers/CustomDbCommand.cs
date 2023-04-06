@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace TNKCars.DataAccess.DbHelpers
 {

@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Npgsql;
 using System.Threading.Tasks;
 
 namespace TNKCars.DataAccess.DbHelpers
 {
-    internal static class DatabaseUtility
+    public static class DatabaseUtility
     {
+        public static async Task<NpgsqlConnection> EstablishConnection()
+        {
+            var connString = GetConnectionString();
+            NpgsqlConnection connection = new NpgsqlConnection(connString);
+            await connection.OpenAsync();
+            return connection;
+        }
+
         public static string GetConnectionString()
         {
             // Hard coded for now
@@ -18,7 +23,7 @@ namespace TNKCars.DataAccess.DbHelpers
 
         public static string FormatConnectionString()
         {
-            return $"postgresql://localhost";
+            return $"Host=localhost;Username=postgres;Password=password;Database=TNKCARS";
         }
 
         public static string FormatConnectionString(ref string username, 
