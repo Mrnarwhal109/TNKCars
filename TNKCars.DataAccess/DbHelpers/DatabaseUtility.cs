@@ -23,7 +23,7 @@ namespace TNKCars.DataAccess.DbHelpers
 
         public static string FormatConnectionString()
         {
-            return $"postgresql://localhost";
+            return $"Host=localhost;Username=postgres;Password=password;Database=TNKCARS";
         }
 
         public static string FormatConnectionString(ref string username, 
