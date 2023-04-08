@@ -28,7 +28,8 @@ namespace TNKCars.DataAccess.DbHelpers
 
                 for (int i = 0; i < fieldCount; i++)
                 {
-                    await reader.GetFieldValueAsync<object>(i);
+                    object cell = await reader.GetFieldValueAsync<object>(i);
+                    currentRow.Add(cell);
                 }
 
                 result.Data.Add(currentRow);
