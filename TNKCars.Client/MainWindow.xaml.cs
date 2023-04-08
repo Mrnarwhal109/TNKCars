@@ -29,14 +29,17 @@ namespace TNKCars.Client
         }
 
         /// <summary>
-        /// This needs to be replaced because it doesn't follow MVVM. The code-behind (this file) shouldn't have any code except for the constructor.
+        /// If using MVVM, this needs to be replaced. The code-behind (this file) shouldn't have any code except for the constructor.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void btnTestingOnly_Click(object sender, RoutedEventArgs e)
         {
-            var badPractice = DataContext as MainWindowViewModel;
-            await badPractice.btnTestingOnly_Click(sender, e);
+            var context = DataContext as MainWindowViewModel;
+
+            if (context == null) return;
+
+            await context.btnTestingOnly_Click(sender, e);
         }
     }
 }

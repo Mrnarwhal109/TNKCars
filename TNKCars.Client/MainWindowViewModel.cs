@@ -22,7 +22,10 @@ namespace TNKCars.Client
         public async Task btnTestingOnly_Click(object sender, RoutedEventArgs e)
         {
             var connection = await DatabaseUtility.EstablishConnection();
-            Debug.WriteLine("TEST HERE!");
+            Debug.WriteLine("TEST 1 HERE");
+
+            var allCars = await DAOCars.GetAllCars(connection);
+            Debug.WriteLine("TEST 2 HERE");
         }
     }
 }
