@@ -23,5 +23,12 @@ namespace TNKCars.DataAccess.DbHelpers
             var converted = await DatabaseConversion.JoinedCarDataToCars(tableRows);
             return converted;
         }
+
+        //async public static void RemoveCar(NpgsqlConnection connection, string id)
+        //{
+        //    var RemoveCar = QueryDefinitions.RemoveCarData(id);
+        //    var command = await CustomDbCommand.CreateAsync(connection);
+        //    var dbResult = await command.ReaderResult(RemoveCar);
+        //}
     }
 }
