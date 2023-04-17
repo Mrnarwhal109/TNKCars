@@ -24,11 +24,11 @@ namespace TNKCars.DataAccess.DbHelpers
             return converted;
         }
 
-        //async public static void RemoveCar(NpgsqlConnection connection, string id)
-        //{
-        //    var RemoveCar = QueryDefinitions.RemoveCarData(id);
-        //    var command = await CustomDbCommand.CreateAsync(connection);
-        //    var dbResult = await command.ReaderResult(RemoveCar);
-        //}
+        async public static void RemoveCar(NpgsqlConnection connection, string id)
+        {
+            var RemoveCar = QueryDefinitions.RemoveCarData(id);
+            var command = await CustomDbCommand.CreateAsync(connection);
+            var dbResult = await command.ReaderResult(RemoveCar);
+        }
     }
 }
