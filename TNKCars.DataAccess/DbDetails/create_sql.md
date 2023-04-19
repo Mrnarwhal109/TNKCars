@@ -34,7 +34,7 @@ CREATE TABLE transmissions (
 
 CREATE TABLE car_manufacturers (
 	car_id INT NOT NULL
-        REFERENCES cars (id),
+        REFERENCES cars (id) ON DELETE CASCADE,
 	manufacturer_id INT NOT NULL
 		REFERENCES manufacturers (id),
     PRIMARY KEY (car_id, manufacturer_id)
@@ -42,7 +42,7 @@ CREATE TABLE car_manufacturers (
 
 CREATE TABLE car_engines (
 	car_id INT NOT NULL
-        REFERENCES cars (id),
+        REFERENCES cars (id) ON DELETE CASCADE,
 	engine_id INT NOT NULL
 		REFERENCES engines (id),
     PRIMARY KEY (car_id, engine_id)
@@ -50,7 +50,7 @@ CREATE TABLE car_engines (
 
 CREATE TABLE car_transmissions (
 	car_id INT NOT NULL
-        REFERENCES cars (id),
+        REFERENCES cars (id) ON DELETE CASCADE,
 	transmission_id INT NOT NULL
 		REFERENCES transmissions (id),
     PRIMARY KEY (car_id, transmission_id)
