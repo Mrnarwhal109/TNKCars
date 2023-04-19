@@ -25,7 +25,6 @@ namespace TNKCars.Client
             InitializeComponent();
 
             // It is quite possible this needs to be moved as well.
-            DataContext = new MainWindowViewModel();
         }
 
         /// <summary>
@@ -33,47 +32,40 @@ namespace TNKCars.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnTestingOnly_Click(object sender, RoutedEventArgs e)
-        {
-            var context = DataContext as MainWindowViewModel;
-
-            if (context == null) return;
-
-            await context.btnTestingOnly_Click(sender, e);
-        }
+      
 
         private void btnCars_Click(object sender, RoutedEventArgs e)
         {
-            MainMenu.Visibility = Visibility.Hidden;
+            //MainMenu.Visibility = Visibility.Hidden;
 
-            CarsMenu.Visibility = Visibility.Visible;
+            //CarsMenu.Visibility = Visibility.Visible;
         }
 
-        private void btnManufacturers_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Hidden;
+        //private void btnManufacturers_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainMenu.Visibility = Visibility.Hidden;
 
-            ManufacturersMenu.Visibility = Visibility.Visible;
-        }
+        //    ManufacturersMenu.Visibility = Visibility.Visible;
+        //}
 
-        private void btnTransmissions_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Hidden;
+        //private void btnTransmissions_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainMenu.Visibility = Visibility.Hidden;
 
-            TransmissionsMenu.Visibility = Visibility.Visible;
-        }
+        //    TransmissionsMenu.Visibility = Visibility.Visible;
+        //}
 
-        private void btnEngines_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Hidden;
+        //private void btnEngines_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainMenu.Visibility = Visibility.Hidden;
 
-            EnginesMenu.Visibility = Visibility.Visible;
-        }
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Hidden;
+        //    EnginesMenu.Visibility = Visibility.Visible;
+        //}
+        //private void btnBack_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Visibility = Visibility.Hidden;
 
-            MainMenu.Visibility = Visibility.Visible;
-        }
+        //    MainMenu.Visibility = Visibility.Visible;
+        //}
     }
 }

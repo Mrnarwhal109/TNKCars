@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="StyleResource.xaml" />
+    <Page Remove="NavigationButtonTheme.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\main-logo.png" />
-    <Resource Include="StyleResource.xaml" />
+    <Resource Include="NavigationButtonTheme.xaml" />
   </ItemGroup>
 
   <ItemGroup>

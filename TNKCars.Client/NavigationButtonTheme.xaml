@@ -4,7 +4,7 @@
 
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
-           x:Key="NavigationButton">
+           x:Key="NavigationButtonTheme">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
