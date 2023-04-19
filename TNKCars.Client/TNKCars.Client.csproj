@@ -8,7 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\main-logo.png" />
+    <None Remove="Assets\splash.png" />
+    <None Remove="logo-no-background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="StyleResource.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TNKCars.DataAccess\TNKCars.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\main-logo.png" />
+    <Resource Include="StyleResource.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Assets\splash.png" />
   </ItemGroup>
 
 </Project>

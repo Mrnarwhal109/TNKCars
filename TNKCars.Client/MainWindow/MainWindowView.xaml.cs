@@ -41,5 +41,39 @@ namespace TNKCars.Client
 
             await context.btnTestingOnly_Click(sender, e);
         }
+
+        private void btnCars_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
+
+            CarsMenu.Visibility = Visibility.Visible;
+        }
+
+        private void btnManufacturers_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
+
+            ManufacturersMenu.Visibility = Visibility.Visible;
+        }
+
+        private void btnTransmissions_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
+
+            TransmissionsMenu.Visibility = Visibility.Visible;
+        }
+
+        private void btnEngines_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
+
+            EnginesMenu.Visibility = Visibility.Visible;
+        }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+
+            MainMenu.Visibility = Visibility.Visible;
+        }
     }
 }
