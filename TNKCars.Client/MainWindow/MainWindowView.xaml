@@ -172,25 +172,29 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
+                         Click="BtnTransmissionBack_Click"
                          />
 
-            <RadioButton Content="Add Engine"
+            <RadioButton Content="Add Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddTransmission_Click"/>
 
-            <RadioButton Content="Remove Engine"
+            <RadioButton Content="Remove Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveTransmission_Click"/>
 
-            <RadioButton Content="Edit Engine"
+            <RadioButton Content="Edit Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditTransmission_Click"/>
         </StackPanel>
     </Grid>
 </Window>

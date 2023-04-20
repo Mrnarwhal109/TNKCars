@@ -139,7 +139,7 @@
 
         <!-- Buttons -->
         <Button Name="btnEdit"
-                Content="Edit car"
+                Content="Edit Car"
                 Grid.Column="4"
                 Grid.Row="8"
                 Height="30"

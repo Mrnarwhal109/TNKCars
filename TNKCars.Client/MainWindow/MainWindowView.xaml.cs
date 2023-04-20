@@ -142,5 +142,33 @@ namespace TNKCars.Client
             dialog.Show();
         }
         #endregion
+
+        #region Transmissions Button Clicks
+        private void BtnTransmissionBack_Click(object sender, RoutedEventArgs e)
+        {
+            TransmissionsMenu.Visibility = Visibility.Hidden;
+
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
+        {
+            AddTransmissionView dialog = new AddTransmissionView();
+
+            dialog.Show();
+        }
+
+        private void BtnRemoveTransmission_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditTransmission_Click(object sender, RoutedEventArgs e)
+        {
+            EditTransmissionView dialog = new EditTransmissionView();
+
+            dialog.Show();
+        }
+        #endregion
     }
 }
