@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TNKCars.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800" Background="#2C2C2C" WindowStyle="None" AllowsTransparency="True">
+        Title="TNKCARS" Height="500" Width="800" Background="#2C2C2C" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
+            <RowDefinition Height="35" />
             <RowDefinition Height="50"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
@@ -39,6 +39,7 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15"
+                         Click="BtnCars_Click"
                          />
 
             <RadioButton Content="Manufacturers"
@@ -46,6 +47,7 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15"
+                         Click="BtnManufacturers_Click"
                          />
 
             <RadioButton Content="Engines"
@@ -53,6 +55,7 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15"
+                         Click="BtnEngines_Click"
                          />
 
             <RadioButton Content="Transmissions"
@@ -60,6 +63,7 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15"
+                         Click="BtnTransmissions_Click"
                          />
         </StackPanel>
         
@@ -69,13 +73,15 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
+                         Click="BtnCarsBack_Click"
                          />
 
             <RadioButton Content="Add Car"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddCar_Click"/>
 
             <RadioButton Content="Remove Car"
                          Style="{StaticResource NavigationButtonTheme}"

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TNKCars.Client.CarsUI;
 
 namespace TNKCars.Client
 {
@@ -23,49 +24,51 @@ namespace TNKCars.Client
         public MainWindow()
         {
             InitializeComponent();
-
-            // It is quite possible this needs to be moved as well.
         }
 
-        /// <summary>
-        /// If using MVVM, this needs to be replaced. The code-behind (this file) shouldn't have any code except for the constructor.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-      
-
-        private void btnCars_Click(object sender, RoutedEventArgs e)
+        #region Main Menu Button Clicks
+        private void BtnCars_Click(object sender, RoutedEventArgs e)
         {
-            //MainMenu.Visibility = Visibility.Hidden;
+            MainMenu.Visibility = Visibility.Hidden;
 
-            //CarsMenu.Visibility = Visibility.Visible;
+            CarsMenu.Visibility = Visibility.Visible;
         }
 
-        //private void btnManufacturers_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainMenu.Visibility = Visibility.Hidden;
+        private void BtnManufacturers_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
 
-        //    ManufacturersMenu.Visibility = Visibility.Visible;
-        //}
+            ManufacturersMenu.Visibility = Visibility.Visible;
+        }
 
-        //private void btnTransmissions_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainMenu.Visibility = Visibility.Hidden;
+        private void BtnTransmissions_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
 
-        //    TransmissionsMenu.Visibility = Visibility.Visible;
-        //}
+            TransmissionsMenu.Visibility = Visibility.Visible;
+        }
 
-        //private void btnEngines_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainMenu.Visibility = Visibility.Hidden;
+        private void BtnEngines_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
 
-        //    EnginesMenu.Visibility = Visibility.Visible;
-        //}
-        //private void btnBack_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Visibility = Visibility.Hidden;
+            EnginesMenu.Visibility = Visibility.Visible;
+        }
+        #endregion
+        #region Cars Button Clicks
+        private void BtnCarsBack_Click(object sender, RoutedEventArgs e)
+        {
+            CarsMenu.Visibility = Visibility.Hidden;
 
-        //    MainMenu.Visibility = Visibility.Visible;
-        //}
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void BtnAddCar_Click(object sender, RoutedEventArgs e) 
+        {
+            AddCarView addCarView = new AddCarView();
+
+            addCarView.Show();
+        }
+        #endregion
     }
 }
