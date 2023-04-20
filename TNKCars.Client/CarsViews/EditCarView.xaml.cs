@@ -13,20 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TNKCars.Client.CarsUI
+namespace TNKCars.Client.CarsViews
 {
     /// <summary>
-    /// Interaction logic for AddCarView.xaml
+    /// Interaction logic for EditCarView.xaml
     /// </summary>
-    public partial class AddCarView : Window
+    public partial class EditCarView : Window
     {
-        
-
-        public AddCarView()
+        public EditCarView()
         {
             InitializeComponent();
         }
-
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
         {
             e.Handled = IsNumsOnly(e.Text);

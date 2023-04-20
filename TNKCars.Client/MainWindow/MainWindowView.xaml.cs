@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TNKCars.Client.CarsUI;
+using TNKCars.Client.CarsViews;
+using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -64,6 +69,20 @@ namespace TNKCars.Client
         }
 
         private void BtnAddCar_Click(object sender, RoutedEventArgs e) 
+        {
+            AddCarView dialog = new AddCarView();
+
+            dialog.Show();
+        }
+
+        private void BtnEditCar_Click(object sender, RoutedEventArgs e)
+        {
+            EditCarView dialog = new EditCarView();
+
+            dialog.Show();
+        }
+
+        private void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
         {
             AddCarView addCarView = new AddCarView();
 
