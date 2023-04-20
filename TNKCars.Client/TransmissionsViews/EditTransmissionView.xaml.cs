@@ -16,13 +16,11 @@ using System.Windows.Shapes;
 namespace TNKCars.Client
 {
     /// <summary>
-    /// Interaction logic for AddCarView.xaml
+    /// Interaction logic for EditTransmissionView.xaml
     /// </summary>
-    public partial class AddCarView : Window
+    public partial class EditTransmissionView : Window
     {
-        
-
-        public AddCarView()
+        public EditTransmissionView()
         {
             InitializeComponent();
         }

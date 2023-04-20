@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TNKCars.Client.CarsViews
+namespace TNKCars.Client
 {
     /// <summary>
     /// Interaction logic for EditCarView.xaml

@@ -1,9 +1,9 @@
-﻿<Window x:Class="TNKCars.Client.CarsUI.AddCarView"
+﻿<Window x:Class="TNKCars.Client.AddCarView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TNKCars.Client.CarsUI"
+        xmlns:local="clr-namespace:TNKCars.Client"
         mc:Ignorable="d"
         Title="Add Car" Height="340" Width="485" Background="#2C2C2C" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -139,7 +139,7 @@
         
         <!-- Buttons -->
         <Button Name="btnAdd"
-                Content="Add car"
+                Content="Add Car"
                 Grid.Column="4"
                 Grid.Row="8"
                 Height="30"

@@ -111,25 +111,29 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
+                         Click="BtnManufacturersBack_Click"
                          />
 
             <RadioButton Content="Add Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddManufacturers_Click" />
 
             <RadioButton Content="Remove Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveManufacturer_Click"/>
 
             <RadioButton Content="Edit Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditManufacturer_Click"/>
         </StackPanel>
 
         <StackPanel x:Name="EnginesMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Visibility="Hidden">
@@ -138,25 +142,28 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
-                         />
+                         Click="BtnEngineBack_Click"/>
 
             <RadioButton Content="Add Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddEngine_Click"/>
 
             <RadioButton Content="Remove Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveEngine_Click"/>
 
             <RadioButton Content="Edit Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditEngine_Click"/>
         </StackPanel>
 
         <StackPanel x:Name="TransmissionsMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Visibility="Hidden">
@@ -165,25 +172,29 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
+                         Click="BtnTransmissionBack_Click"
                          />
 
-            <RadioButton Content="Add Engine"
+            <RadioButton Content="Add Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddTransmission_Click"/>
 
-            <RadioButton Content="Remove Engine"
+            <RadioButton Content="Remove Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveTransmission_Click"/>
 
-            <RadioButton Content="Edit Engine"
+            <RadioButton Content="Edit Transmission"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditTransmission_Click"/>
         </StackPanel>
     </Grid>
 </Window>
