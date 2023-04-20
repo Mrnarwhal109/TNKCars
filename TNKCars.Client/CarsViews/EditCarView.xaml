@@ -138,8 +138,8 @@
                   Style="{StaticResource ComboBoxTheme}"/>
 
         <!-- Buttons -->
-        <Button Name="btnAdd"
-                Content="Add car"
+        <Button Name="btnEdit"
+                Content="Edit car"
                 Grid.Column="4"
                 Grid.Row="8"
                 Height="30"

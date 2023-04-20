@@ -114,5 +114,33 @@ namespace TNKCars.Client
             dialog.Show();
         }
         #endregion
+
+        #region Engines Button Clicks
+        private void BtnEngineBack_Click(object sender, RoutedEventArgs e)
+        {
+            EnginesMenu.Visibility = Visibility.Hidden;
+
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void BtnAddEngine_Click(object sender, RoutedEventArgs e)
+        {
+            AddEngineView dialog = new AddEngineView();
+
+            dialog.Show();
+        }
+
+        private void BtnRemoveEngine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditEngine_Click(object sender, RoutedEventArgs e)
+        {
+            EditEngineView dialog = new EditEngineView();
+
+            dialog.Show();
+        }
+        #endregion
     }
 }

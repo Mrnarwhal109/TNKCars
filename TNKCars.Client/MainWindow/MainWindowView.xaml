@@ -142,25 +142,28 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
-                         />
+                         Click="BtnEngineBack_Click"/>
 
             <RadioButton Content="Add Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddEngine_Click"/>
 
             <RadioButton Content="Remove Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveEngine_Click"/>
 
             <RadioButton Content="Edit Engine"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditEngine_Click"/>
         </StackPanel>
 
         <StackPanel x:Name="TransmissionsMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Visibility="Hidden">
