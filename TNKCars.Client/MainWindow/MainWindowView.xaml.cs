@@ -13,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TNKCars.Client.CarsUI;
-using TNKCars.Client.CarsViews;
+using TNKCars.Client;
 using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
@@ -84,9 +83,35 @@ namespace TNKCars.Client
 
         private void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
         {
-            AddCarView addCarView = new AddCarView();
 
-            addCarView.Show();
+        }
+        #endregion
+
+        #region Manufacturers Button Clicks
+        private void BtnManufacturersBack_Click(object sender, RoutedEventArgs e)
+        {
+            ManufacturersMenu.Visibility = Visibility.Hidden;
+
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
+        {
+            AddManufacturerView dialog = new AddManufacturerView();
+
+            dialog.Show();
+        }
+
+        private void BtnRemoveManufacturer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditManufacturer_Click(object sender, RoutedEventArgs e)
+        {
+            EditManufacturerView dialog = new EditManufacturerView();
+
+            dialog.Show();
         }
         #endregion
     }

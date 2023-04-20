@@ -111,25 +111,29 @@
                          Height="50"
                          Foreground="#969696"
                          FontSize="15" 
+                         Click="BtnManufacturersBack_Click"
                          />
 
             <RadioButton Content="Add Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnAddManufacturers_Click" />
 
             <RadioButton Content="Remove Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnRemoveManufacturer_Click"/>
 
             <RadioButton Content="Edit Manufacturer"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
-                         FontSize="15"/>
+                         FontSize="15"
+                         Click="BtnEditManufacturer_Click"/>
         </StackPanel>
 
         <StackPanel x:Name="EnginesMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Visibility="Hidden">
