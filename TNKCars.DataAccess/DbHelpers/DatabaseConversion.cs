@@ -62,7 +62,7 @@ namespace TNKCars.DataAccess.DbHelpers
                 Task t = Task.Run(
                     async () =>
                     {
-                        enginesBag.Add(await RowtoEngine(row));
+                        enginesBag.Add(await RowToEngine(row));
                     });
                 activeWork.Add(t);
             }
@@ -147,7 +147,7 @@ namespace TNKCars.DataAccess.DbHelpers
             return result;
         }
 
-        internal static async Task<Engine> RowtoEngine(List<object> dataRow)
+        internal static async Task<Engine> RowToEngine(List<object> dataRow)
         {
             var result = await Task.Run(() =>
             {
