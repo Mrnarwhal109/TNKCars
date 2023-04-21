@@ -147,5 +147,39 @@ namespace TNKCars.DataAccess.DbDetails
             WHERE id = @ID;
         ";
 
+        internal static readonly string RemoveCarsFromAllTables = @"
+            with main as (
+	            SELECT c.id car_id, m.id man_id, e.id en_id, t.id tran_id
+	            FROM cars c
+	            INNER JOIN car_manufacturers cm
+		            ON cm.car_id = c.id
+	            INNER JOIN manufacturers m
+		            ON cm.manufacturer_id = m.id
+	            INNER JOIN car_engines ce
+		            ON ce.car_id = c.id
+	            INNER JOIN engines e
+		            ON ce.engine_id = e.id
+	            INNER JOIN car_transmissions ct
+		            ON ct.car_id = c.id
+	            INNER JOIN transmissions t
+		            ON ct.transmission_id = t.id
+	            where c.id = @ID
+            ),
+            manufacturers as (
+                delete from manufacturers 
+                where id in (select man_id from main)
+            ),
+            engines as (
+	            delete from engines 
+                where id in (select en_id from main)
+            ),
+            transmission as (
+	            delete from transmissions 
+                where id in (select tran_id from main)
+            )
+            delete from cars 
+            where id in (select car_id from main)
+        ";
+
     }
 }
