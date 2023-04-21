@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,94 @@ namespace TNKCars.DataAccess.DbHelpers
             var dbResult = await command.ReaderResult();
             var converted = await DatabaseConversion.RowToManufacturer(dbResult.Data[0]);
             return converted;
+        }
+
+        // insert
+        async public static void InsertCar(NpgsqlConnection connection, string title, int price, int series_year, int horsepower)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.InsertCar, connection);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@PRICE", price);
+            await command.AddParameter("@SERIES_YEAR", series_year);
+            await command.AddParameter("@HORSEPOWER", horsepower);
+            await command.ReaderResult();
+        }
+
+        async public static void InsertEngine(NpgsqlConnection connection, string title, int cyl, double displacement)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.InsertEngine, connection);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@CYL_COUNT", cyl);
+            await command.AddParameter("@DISPLACEMENT", displacement);
+            await command.ReaderResult();
+        }
+
+        async public static void InsertTransmission(NpgsqlConnection connection, string title, int gear, bool is_auto)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.InsertTransmission, connection);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@GEAR_COUNT", gear);
+            await command.AddParameter("@IS_AUTOMATIC", is_auto);
+            await command.ReaderResult();
+        }
+
+        async public static void InsertManufacturer(NpgsqlConnection connection, string title, int founded_year)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.InsertManufacturer, connection);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@FOUNDED_YEAR", founded_year);
+            await command.ReaderResult();
+        }
+
+        // UPDATE
+        async public static void UpdateEngineWithId(NpgsqlConnection connection, int id, string title, int cyl, double displacement)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.UpdateEngineWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@CYL_COUNT", cyl);
+            await command.AddParameter("@DISPLACEMENT", displacement);
+            await command.ReaderResult();
+        }
+
+        async public static void UpdateTransmissionWithId(NpgsqlConnection connection, int id, string title, int gear, bool is_auto)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.UpdateTransmissionWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@GEAR_COUNT", gear);
+            await command.AddParameter("@IS_AUTOMATIC", is_auto);
+            await command.ReaderResult();
+        }
+
+        async public static void UpdateManufacturerWithId(NpgsqlConnection connection, int id, string title, int founded_year)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.UpdateManufacturerWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@FOUNDED_YEAR", founded_year);
+            await command.ReaderResult();
+        }
+
+        async public static void DeleteEngineWithId(NpgsqlConnection connection, int id)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteEngineWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.ReaderResult();
+        }
+
+        async public static void DeleteTransmissionWithId(NpgsqlConnection connection, int id)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteTransmissionWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.ReaderResult();
+        }
+
+        async public static void DeleteManufacturerWithId(NpgsqlConnection connection, int id)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteManufacturerWithId, connection);
+            await command.AddParameter("@ID", id);
+            await command.ReaderResult();
         }
     }
 }
