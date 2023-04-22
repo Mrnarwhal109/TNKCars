@@ -178,7 +178,25 @@ namespace TNKCars.DataAccess.DbDetails
                 where id in (select tran_id from main)
             )
             delete from cars 
-            where id in (select car_id from main)
+            where id in (select car_id from main);
+        ";
+
+        internal static readonly string AddCarUsingChilds = @"
+            with main as (
+	            INSERT INTO cars(title, price, series_year, horsepower)
+	            VALUES(@TITLE, @PRICE, @SERIES_YEAR, @HORSEPOWER);
+	            RETURNING id
+            ),
+            car_manufacturers as (
+	            insert into car_manufacturers
+	            select id, @MANU_ID from main
+            ),
+            car_engines as (
+	            insert into car_engines
+	            select id, @ENG_ID from main
+            )
+            insert into car_transmissions
+            select id, @TRAN_ID from main;
         ";
 
     }
