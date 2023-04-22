@@ -1,7 +1,11 @@
 ﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using TNKCars.DataAccess;
 using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
@@ -23,6 +27,7 @@ namespace TNKCars.Client
                 {
                     await Load();
                 });
+            dgTable.SelectionMode = System.Windows.Controls.DataGridSelectionMode.Single;
         }
 
         public async Task Load()
@@ -80,20 +85,20 @@ namespace TNKCars.Client
         private async void BtnAddCar_Click(object sender, RoutedEventArgs e) 
         {
             AddCarView dialog = new AddCarView(connection);
-
-            dialog.Show();
+            dialog.ShowDialog();
+            await SetCarDataGrid();
         }
 
         private async void BtnEditCar_Click(object sender, RoutedEventArgs e)
         {
             EditCarView dialog = new EditCarView(connection);
-
-            dialog.Show();
+            dialog.ShowDialog();
+            await SetCarDataGrid();
         }
 
         private async void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
         {
-
+            await SetCarDataGrid();
         }
         #endregion
 
@@ -108,20 +113,27 @@ namespace TNKCars.Client
         private async void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
         {
             AddManufacturerView dialog = new AddManufacturerView(connection);
-
-            dialog.Show();
+            dialog.ShowDialog();
+            await SetManufacturerDataGrid();
         }
 
         private async void BtnRemoveManufacturer_Click(object sender, RoutedEventArgs e)
         {
+            var selectedInGrid = dgTable.SelectedItem as Manufacturer;
+            if (selectedInGrid == null) { return; }
 
+            await DAODelete.DeleteManufacturerWithId(connection, selectedInGrid.Id);
+            await SetManufacturerDataGrid();
         }
 
         private async void BtnEditManufacturer_Click(object sender, RoutedEventArgs e)
         {
-            EditManufacturerView dialog = new EditManufacturerView(connection);
+            var selectedInGrid = dgTable.SelectedItem as Manufacturer;
+            if (selectedInGrid == null) { return; }
 
-            dialog.Show();
+            EditManufacturerView dialog = new EditManufacturerView(connection, selectedInGrid);
+            dialog.ShowDialog();
+            await SetManufacturerDataGrid();
         }
         #endregion
 
@@ -136,20 +148,27 @@ namespace TNKCars.Client
         private async void BtnAddEngine_Click(object sender, RoutedEventArgs e)
         {
             AddEngineView dialog = new AddEngineView(connection);
-
-            dialog.Show();
+            dialog.ShowDialog();
+            await SetEngineDataGrid();
         }
 
         private async void BtnRemoveEngine_Click(object sender, RoutedEventArgs e)
         {
+            var selectedInGrid = dgTable.SelectedItem as Engine;
+            if (selectedInGrid == null) { return; }
 
+            await DAODelete.DeleteEngineWithId(connection, selectedInGrid.Id);
+            await SetEngineDataGrid();
         }
 
         private async void BtnEditEngine_Click(object sender, RoutedEventArgs e)
         {
-            EditEngineView dialog = new EditEngineView(connection);
+            var selectedInGrid = dgTable.SelectedItem as Engine;
+            if (selectedInGrid == null) { return; }
 
-            dialog.Show();
+            EditEngineView dialog = new EditEngineView(connection, selectedInGrid);
+            dialog.ShowDialog();
+            await SetEngineDataGrid();
         }
         #endregion
 
@@ -164,55 +183,68 @@ namespace TNKCars.Client
         private async void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
         {
             AddTransmissionView dialog = new AddTransmissionView(connection);
-
-            dialog.Show();
+            dialog.ShowDialog();
+            await SetTransmissionDataGrid();
         }
 
         private async void BtnRemoveTransmission_Click(object sender, RoutedEventArgs e)
         {
+            var selectedInGrid = dgTable.SelectedItem as Transmission;
+            if (selectedInGrid == null) { return; }
 
+            await DAODelete.DeleteTransmissionWithId(connection, selectedInGrid.Id);
+            await SetTransmissionDataGrid();
         }
 
         private async void BtnEditTransmission_Click(object sender, RoutedEventArgs e)
         {
-            EditTransmissionView dialog = new EditTransmissionView(connection);
+            var selectedInGrid = dgTable.SelectedItem as Transmission;
+            if (selectedInGrid == null) { return; }
 
-            dialog.Show();
+            EditTransmissionView dialog = new EditTransmissionView(connection, selectedInGrid);
+            dialog.ShowDialog();
+            await SetManufacturerDataGrid();
         }
         #endregion
 
         #region Data Grid Setters
         private async Task SetAllCarDataGrid()
         {
-            List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithDetails(connection);
+            List<DataAccess.Car> cars = await DAOSelect.GetAllCarsWithDetails(connection);
 
-            dgTable.ItemsSource = cars;
+            ObservableCollection<DataAccess.Car> obsColl = new ObservableCollection<DataAccess.Car>();
+            foreach (var car in cars)
+            {
+                obsColl.Add(car);
+            }
+
+            await UIHelpers.InvokeOnUIThread(() => dgTable.ItemsSource = cars);   
         }
 
         private async Task SetCarDataGrid()
         {
-            List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithoutDetails(connection);
+            List<DataAccess.Car> cars = await DAOSelect.GetAllCarsWithoutDetails(connection);
 
             dgTable.ItemsSource = cars;
         }
 
         private async Task SetManufacturerDataGrid()
         {
-            List<DataAccess.Manufacturer> manufacturers = await DAOCars.GetAllManufacturers(connection);
+            List<DataAccess.Manufacturer> manufacturers = await DAOSelect.GetAllManufacturers(connection);
 
             dgTable.ItemsSource = manufacturers;
         }
 
         private async Task SetEngineDataGrid()
         {
-            List<DataAccess.Engine> engines = await DAOCars.GetAllEngines(connection);
+            List<DataAccess.Engine> engines = await DAOSelect.GetAllEngines(connection);
 
             dgTable.ItemsSource = engines;
         }
 
         private async Task SetTransmissionDataGrid()
         {
-            List<DataAccess.Transmission> transmissions = await DAOCars.GetAllTransmissions(connection);
+            List<DataAccess.Transmission> transmissions = await DAOSelect.GetAllTransmissions(connection);
 
             dgTable.ItemsSource = transmissions;
         }

@@ -38,7 +38,7 @@
         ";
 
         internal static readonly string GetAllManufacturers = @"
-            SELCT m.id, m.title, m.founded_year, m.added_at
+            SELECT m.id, m.title, m.founded_year, m.added_at
             FROM manufacturers m;
         ";
 
@@ -82,7 +82,7 @@
         ";
 
         internal static readonly string GetManufacturerWithId = @"
-            SELCT m.id, m.title, m.founded_year, m.added_at
+            SELECT m.id, m.title, m.founded_year, m.added_at
             FROM manufacturers m
             WHERE m.id = @ID;
         ";
@@ -103,8 +103,9 @@
         ";
 
         internal static readonly string InsertManufacturer = @"
-            INSERT INTO manufacturers(id, title, founded_year)
-            VALUES(@TITLE, @FOUNDED_YEAR);
+            INSERT INTO manufacturers(title, founded_year)
+            VALUES(@TITLE, @FOUNDED_YEAR)
+            RETURNING id;
         ";
 
         internal static readonly string UpdateEngineWithId = @"

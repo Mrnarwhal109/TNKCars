@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TNKCars.Client"
         mc:Ignorable="d"
-        Title="Add Car" Height="340" Width="485" Background="#2C2C2C" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+        Title="Add Car" Height="340" Width="485" Background="#2C2C2C" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
