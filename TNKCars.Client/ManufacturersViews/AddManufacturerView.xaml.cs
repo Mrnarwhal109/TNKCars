@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
@@ -38,6 +39,11 @@ namespace TNKCars.Client
         {
             Regex numsOnly = new Regex("[^0-9]+");
             return numsOnly.IsMatch(text);
+        }
+
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => DAOCars.InsertManufacturer(connection, txtTitle.Text, Convert.ToInt32(txtFoundedYear.Text)));
         }
     }
 }

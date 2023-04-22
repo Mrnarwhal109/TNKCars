@@ -40,5 +40,10 @@ namespace TNKCars.Client
             Regex numsOnly = new Regex("[^0-9]+");
             return numsOnly.IsMatch(text);
         }
+
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => DAOCars.InsertEngine(connection, txtTitle.Text, Convert.ToInt32(txtCylinderCount.Text), Convert.ToDouble(txtDisplacement.Text)));
+        }
     }
 }

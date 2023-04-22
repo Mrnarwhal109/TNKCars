@@ -43,7 +43,7 @@ namespace TNKCars.Client
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //await Task.Run(() => DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)));
+            await Task.Run(() => DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)));
         }
 
         private async void SetManufacturerComboBox()
