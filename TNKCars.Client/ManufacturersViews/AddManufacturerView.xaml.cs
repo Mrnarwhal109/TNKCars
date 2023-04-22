@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TNKCars.DataAccess;
 using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
@@ -27,7 +28,9 @@ namespace TNKCars.Client
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => DAOCars.InsertManufacturer(connection, txtTitle.Text, Convert.ToInt32(txtFoundedYear.Text)));
+            string title = txtTitle.Text;
+            int foundedYear = Convert.ToInt32(txtFoundedYear.Text);
+            var insertedManufacturer = await DAOInsert.InsertRetrieveManufacturer(connection, title, foundedYear);
         }
     }
 }

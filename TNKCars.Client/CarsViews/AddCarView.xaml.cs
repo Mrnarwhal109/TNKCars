@@ -27,21 +27,13 @@ namespace TNKCars.Client
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)));
+            await Task.Run(() => DAOInsert.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)));
         }
 
-        private async Task SetManufacturerComboBox()
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await ComboBoxDataHelpers.FillComboBoxWithManufacturers(connection, cmbManufacturer);
-        }
-
-        private async Task SetEngineComboBox()
-        {
             await ComboBoxDataHelpers.FillComboBoxWithEngines(connection, cmbEngine);
-        }
-
-        private async Task GetTransmissions()
-        {
             await ComboBoxDataHelpers.FillComboBoxWithTransmissions(connection, cmbEngine);
         }
     }

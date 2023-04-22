@@ -7,7 +7,7 @@ INSERT INTO cars (id, title, price, series_year, horsepower)
 VALUES (1, 'Enzo', 300000, 2013, 700);
 
 INSERT INTO engines (id, title, cylinder_count, displacement)
-VALUES (1, 'E-XV8', 8, 5.1);
+VALUES (1, 'E-XV12', 12, 6.0);
 
 INSERT INTO transmissions (id, title, gear_count, is_automatic)
 VALUES (1, 'E-7 Drivetrain', 7, false);

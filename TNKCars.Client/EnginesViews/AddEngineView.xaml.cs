@@ -27,7 +27,11 @@ namespace TNKCars.Client
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => DAOCars.InsertEngine(connection, txtTitle.Text, Convert.ToInt32(txtCylinderCount.Text), Convert.ToDouble(txtDisplacement.Text)));
+            string title = txtTitle.Text;
+            int cylinderCount = Convert.ToInt32(txtCylinderCount.Text);
+            double displacement = Convert.ToDouble(txtDisplacement.Text);
+
+            var inserted = await DAOInsert.InsertRetrieveEngine(connection, title, cylinderCount, displacement);
         }
     }
 }

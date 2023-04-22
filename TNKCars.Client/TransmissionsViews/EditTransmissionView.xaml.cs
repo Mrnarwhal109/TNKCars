@@ -1,6 +1,9 @@
 ﻿using Npgsql;
+using System;
 using System.Windows;
 using System.Windows.Input;
+using TNKCars.DataAccess;
+using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
@@ -10,11 +13,17 @@ namespace TNKCars.Client
     public partial class EditTransmissionView : Window
     {
         NpgsqlConnection connection;
+        Transmission _focusedTransmission;
 
-        public EditTransmissionView(NpgsqlConnection connect)
+        public EditTransmissionView(NpgsqlConnection connect, Transmission focusedTransmission)
         {
             InitializeComponent();
             connection = connect;
+            _focusedTransmission = focusedTransmission;
+
+            // If there was more time, these would all be set with databinding
+            txtTitle.Text = _focusedTransmission.Title;
+            txtGearCount.Text = _focusedTransmission.GearCount.ToString();
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
@@ -24,7 +33,10 @@ namespace TNKCars.Client
 
         private async void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //await Task.Run(() => DAOCars.UpdateTransmissionWithID(connection, txtTitle.Text, Convert.ToInt32(txtGearCount.Text), ComboBox box value));
+            string title = txtTitle.Text;
+            int gears = Convert.ToInt32(txtGearCount.Text);
+            bool is_auto = true;
+            await DAOUpdate.UpdateTransmissionWithId(connection, _focusedTransmission.Id, title, gears, is_auto);
         }
     }
 }
