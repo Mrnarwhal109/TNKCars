@@ -25,6 +25,8 @@ namespace TNKCars.Client
     
     public partial class MainWindow : Window
     {
+        List<DataAccess.Car> cars = new List<DataAccess.Car>(); 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace TNKCars.Client
             MainMenu.Visibility = Visibility.Hidden;
 
             CarsMenu.Visibility = Visibility.Visible;
+
+            SetCarHeaderDG();
         }
 
         private void BtnManufacturers_Click(object sender, RoutedEventArgs e)
@@ -43,13 +47,8 @@ namespace TNKCars.Client
             MainMenu.Visibility = Visibility.Hidden;
 
             ManufacturersMenu.Visibility = Visibility.Visible;
-        }
 
-        private void BtnTransmissions_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Hidden;
-
-            TransmissionsMenu.Visibility = Visibility.Visible;
+            SetManufacturerHeaderDG();
         }
 
         private void BtnEngines_Click(object sender, RoutedEventArgs e)
@@ -57,14 +56,28 @@ namespace TNKCars.Client
             MainMenu.Visibility = Visibility.Hidden;
 
             EnginesMenu.Visibility = Visibility.Visible;
+
+            SetEngineHeaderDG();
+        }
+
+        private void BtnTransmissions_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Hidden;
+
+            TransmissionsMenu.Visibility = Visibility.Visible;
+
+            SetTransmissionHeaderDG();
         }
         #endregion
+
         #region Cars Button Clicks
         private void BtnCarsBack_Click(object sender, RoutedEventArgs e)
         {
             CarsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            SetEmptyHeaderDG();
         }
 
         private void BtnAddCar_Click(object sender, RoutedEventArgs e) 
@@ -93,6 +106,8 @@ namespace TNKCars.Client
             ManufacturersMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            SetEmptyHeaderDG();
         }
 
         private void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
@@ -121,6 +136,8 @@ namespace TNKCars.Client
             EnginesMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            SetEmptyHeaderDG();
         }
 
         private void BtnAddEngine_Click(object sender, RoutedEventArgs e)
@@ -149,6 +166,8 @@ namespace TNKCars.Client
             TransmissionsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            SetEmptyHeaderDG();
         }
 
         private void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
@@ -170,5 +189,132 @@ namespace TNKCars.Client
             dialog.Show();
         }
         #endregion
+
+        private void SetEmptyHeaderDG()
+        {
+            dgTable.Columns.Clear();
+            //dgTable.ItemsSource = null;
+            dgTable.Items.Refresh();
+        }
+
+        private void SetCarHeaderDG()
+        {
+            dgTable.Columns.Clear();
+            //dgTable.ItemsSource = null;
+            dgTable.Items.Refresh();
+
+            List<DataGridTextColumn> dataGridTextColumn = new List<DataGridTextColumn>();
+
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[0].Header = "ID";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[1].Header = "Model";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[2].Header = "Price";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[3].Header = "Series Year";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[4].Header = "Horsepower";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[5].Header = "Added at";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[6].Header = "Manufacturer";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[7].Header = "Engine";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[8].Header = "Transmission";
+
+            dgTable.Columns.Add(dataGridTextColumn[0]);
+            dgTable.Columns.Add(dataGridTextColumn[1]);
+            dgTable.Columns.Add(dataGridTextColumn[2]);
+            dgTable.Columns.Add(dataGridTextColumn[3]);
+            dgTable.Columns.Add(dataGridTextColumn[4]);
+            dgTable.Columns.Add(dataGridTextColumn[5]);
+            dgTable.Columns.Add(dataGridTextColumn[6]);
+            dgTable.Columns.Add(dataGridTextColumn[7]);
+            dgTable.Columns.Add(dataGridTextColumn[8]);
+
+
+            //var connection = await DatabaseUtility.EstablishConnection();
+            //cars = await DAOCars.GetAllCarsWithoutDetails(connection);
+
+            //dgTable.ItemsSource = cars;
+        }
+
+        private void SetManufacturerHeaderDG()
+        {
+            dgTable.Columns.Clear();
+            //dgTable.ItemsSource = null;
+            dgTable.Items.Refresh();
+
+            List<DataGridTextColumn> dataGridTextColumn = new List<DataGridTextColumn>();
+
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[0].Header = "ID";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[1].Header = "Name";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[2].Header = "Founded Year";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[3].Header = "Added at";
+
+            dgTable.Columns.Add(dataGridTextColumn[0]);
+            dgTable.Columns.Add(dataGridTextColumn[1]);
+            dgTable.Columns.Add(dataGridTextColumn[2]);
+            dgTable.Columns.Add(dataGridTextColumn[3]);
+        }
+
+        private void SetEngineHeaderDG()
+        {
+            dgTable.Columns.Clear();
+            //dgTable.ItemsSource = null;
+            dgTable.Items.Refresh();
+
+            List<DataGridTextColumn> dataGridTextColumn = new List<DataGridTextColumn>();
+
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[0].Header = "ID";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[1].Header = "Name";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[2].Header = "Cylinder Count";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[3].Header = "Displacement";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[4].Header = "Added at";
+
+            dgTable.Columns.Add(dataGridTextColumn[0]);
+            dgTable.Columns.Add(dataGridTextColumn[1]);
+            dgTable.Columns.Add(dataGridTextColumn[2]);
+            dgTable.Columns.Add(dataGridTextColumn[3]);
+            dgTable.Columns.Add(dataGridTextColumn[4]);
+        }
+
+        private void SetTransmissionHeaderDG()
+        {
+            dgTable.Columns.Clear();
+            //dgTable.ItemsSource = null;
+            dgTable.Items.Refresh();
+
+            List<DataGridTextColumn> dataGridTextColumn = new List<DataGridTextColumn>();
+
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[0].Header = "ID";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[1].Header = "Name";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[2].Header = "Gear Count";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[3].Header = "Automatic";
+            dataGridTextColumn.Add(new DataGridTextColumn());
+            dataGridTextColumn[4].Header = "Added at";
+
+            dgTable.Columns.Add(dataGridTextColumn[0]);
+            dgTable.Columns.Add(dataGridTextColumn[1]);
+            dgTable.Columns.Add(dataGridTextColumn[2]);
+            dgTable.Columns.Add(dataGridTextColumn[3]);
+            dgTable.Columns.Add(dataGridTextColumn[4]);
+        }
     }
 }
+

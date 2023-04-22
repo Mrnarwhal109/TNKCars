@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="TNKCARS" Height="500" Width="800" Background="#2C2C2C" WindowStartupLocation="CenterScreen">
 
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -32,12 +33,13 @@
                   HorizontalAlignment="Stretch" 
                   VerticalAlignment="Stretch" 
                   Background="#2C2C2C"  
-                  BorderBrush="#202020">
-            <DataGrid.Resources>
+                  BorderBrush="#202020"
+                  >
+            <!--<DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#202020" />
                 </Style>
-            </DataGrid.Resources>
+            </DataGrid.Resources>-->
         </DataGrid>
 
         <StackPanel x:Name="MainMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2">

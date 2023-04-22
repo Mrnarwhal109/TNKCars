@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="DataGridTheme.xaml" />
     <Page Remove="NavigationButtonTheme.xaml" />
   </ItemGroup>
 
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\main-logo.png" />
+    <Resource Include="DataGridTheme.xaml" />
     <Resource Include="NavigationButtonTheme.xaml" />
   </ItemGroup>
 
