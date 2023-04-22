@@ -41,8 +41,8 @@ namespace TNKCars.Client
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //var connection = await DatabaseUtility.EstablishConnection();
-            //DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text));
+            var connection = await DatabaseUtility.EstablishConnection();
+            DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text));
         }
     }
 }
