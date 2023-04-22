@@ -34,10 +34,16 @@
                   VerticalAlignment="Stretch" 
                   Background="#2C2C2C"  
                   BorderBrush="#202020"
+                  
                   >
             <!--<DataGrid.Resources>
-                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#202020" />
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#202020"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="FontFamily" Value="Segoe UI"/>
+                    <Setter Property="BorderThickness" Value="0 0 1 2"/>
+                    <Setter Property="BorderBrush" Value="White"/>
                 </Style>
             </DataGrid.Resources>-->
         </DataGrid>
