@@ -203,7 +203,7 @@ namespace TNKCars.Client
 
             EditTransmissionView dialog = new EditTransmissionView(connection, selectedInGrid);
             dialog.ShowDialog();
-            await SetManufacturerDataGrid();
+            await SetTransmissionDataGrid();
         }
         #endregion
 

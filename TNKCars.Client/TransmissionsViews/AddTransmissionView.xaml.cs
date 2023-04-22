@@ -1,6 +1,8 @@
 ﻿using Npgsql;
+using System;
 using System.Windows;
 using System.Windows.Input;
+using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
@@ -24,7 +26,11 @@ namespace TNKCars.Client
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //await Task.Run(() => DAOCars.InsertTransmission(connection, txtTitle.Text, Convert.ToInt32(txtGearCount.Text), ComboBox box value));
+            string title = txtTitle.Text;
+            int gears = Convert.ToInt32(txtGearCount.Text);
+            bool isAuto = true;
+
+            await DAOInsert.InsertTransmission(connection, title, gears, isAuto);
         }
     }
 }

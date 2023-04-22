@@ -30,7 +30,7 @@ namespace TNKCars.Client
         {
             string title = txtTitle.Text;
             int foundedYear = Convert.ToInt32(txtFoundedYear.Text);
-            var insertedManufacturer = await DAOInsert.InsertRetrieveManufacturer(connection, title, foundedYear);
+            await DAOInsert.InsertManufacturer(connection, title, foundedYear);
         }
     }
 }

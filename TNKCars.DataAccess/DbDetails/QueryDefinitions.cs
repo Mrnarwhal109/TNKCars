@@ -94,12 +94,14 @@
 
         internal static readonly string InsertEngine = @"
             INSERT INTO engines(title, cylinder_count, displacement)
-            VALUES(@TITLE, @CYL_COUNT, @DISPLACEMENT);
+            VALUES(@TITLE, @CYL_COUNT, @DISPLACEMENT)
+            RETURNING id;
         ";
 
         internal static readonly string InsertTransmission = @"
             INSERT INTO transmissions(title, gear_count, is_automatic)
-            VALUES(@TITLE, @GEAR_COUNT, @IS_AUTOMATIC);
+            VALUES(@TITLE, @GEAR_COUNT, @IS_AUTOMATIC)
+            RETURNING id;
         ";
 
         internal static readonly string InsertManufacturer = @"
