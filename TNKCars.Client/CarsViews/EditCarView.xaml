@@ -147,6 +147,7 @@
                 HorizontalAlignment="Right"
                 Background="#202020"
                 Foreground="#C8C8C8"
-                Margin="5 5 0 10"/>
+                Margin="5 5 0 10"
+                Click="BtnEdit_Click"/>
     </Grid>
 </Window>

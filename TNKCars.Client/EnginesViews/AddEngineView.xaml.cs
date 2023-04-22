@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
@@ -20,9 +22,12 @@ namespace TNKCars.Client
     /// </summary>
     public partial class AddEngineView : Window
     {
-        public AddEngineView()
+        NpgsqlConnection connection;
+
+        public AddEngineView(NpgsqlConnection connect)
         {
             InitializeComponent();
+            connection = connect;
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
@@ -34,6 +39,11 @@ namespace TNKCars.Client
         {
             Regex numsOnly = new Regex("[^0-9]+");
             return numsOnly.IsMatch(text);
+        }
+
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => DAOCars.InsertEngine(connection, txtTitle.Text, Convert.ToInt32(txtCylinderCount.Text), Convert.ToDouble(txtDisplacement.Text)));
         }
     }
 }

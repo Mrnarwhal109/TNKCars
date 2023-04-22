@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace TNKCars.Client
     /// </summary>
     public partial class EditTransmissionView : Window
     {
-        public EditTransmissionView()
+        NpgsqlConnection connection;
+
+        public EditTransmissionView(NpgsqlConnection connect)
         {
             InitializeComponent();
+            connection = connect;
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
@@ -34,6 +38,11 @@ namespace TNKCars.Client
         {
             Regex numsOnly = new Regex("[^0-9]+");
             return numsOnly.IsMatch(text);
+        }
+
+        private async void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            //await Task.Run(() => DAOCars.UpdateTransmissionWithID(connection, txtTitle.Text, Convert.ToInt32(txtGearCount.Text), ComboBox box value));
         }
     }
 }

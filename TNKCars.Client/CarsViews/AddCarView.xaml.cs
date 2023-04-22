@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,12 @@ namespace TNKCars.Client
     /// </summary>
     public partial class AddCarView : Window
     {
-        public string MyValue { get; set; }
+        NpgsqlConnection connection;
 
-        public AddCarView()
+        public AddCarView(NpgsqlConnection connect)
         {
             InitializeComponent();
+            connection = connect;
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
@@ -39,10 +41,30 @@ namespace TNKCars.Client
             return numsOnly.IsMatch(text);
         }
 
-        private async void btnAdd_Click(object sender, RoutedEventArgs e)
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var connection = await DatabaseUtility.EstablishConnection();
-            DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text));
+            await Task.Run(() => DAOCars.InsertCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)));
+        }
+
+        private async void SetManufacturerComboBox()
+        {
+            List<DataAccess.Manufacturer> manufacturers = await DAOCars.GetAllManufacturers(connection);
+
+            cmbManufacturer.ItemsSource = manufacturers;
+        }
+
+        private async void SetEngineComboBox()
+        {
+            List<DataAccess.Engine> engines = await DAOCars.GetAllEngines(connection);
+
+            cmbEngine.ItemsSource = engines;
+        }
+
+        private async void GetTransmissions()
+        {
+            List<DataAccess.Transmission> transmissions = await DAOCars.GetAllTransmissions(connection);
+
+            cmbTransmission.ItemsSource = transmissions;
         }
     }
 }

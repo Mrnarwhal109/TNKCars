@@ -148,6 +148,6 @@
                 Background="#202020"
                 Foreground="#C8C8C8"
                 Margin="5 5 0 10" 
-                Click="btnAdd_Click"/>
+                Click="BtnAdd_Click"/>
     </Grid>
 </Window>
