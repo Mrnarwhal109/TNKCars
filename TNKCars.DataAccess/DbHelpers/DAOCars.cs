@@ -104,7 +104,7 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@PRICE", price);
             await command.AddParameter("@SERIES_YEAR", series_year);
             await command.AddParameter("@HORSEPOWER", horsepower);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void InsertEngine(NpgsqlConnection connection, string title, int cyl, double displacement)
@@ -113,7 +113,7 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@CYL_COUNT", cyl);
             await command.AddParameter("@DISPLACEMENT", displacement);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void InsertTransmission(NpgsqlConnection connection, string title, int gear, bool is_auto)
@@ -122,7 +122,7 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@GEAR_COUNT", gear);
             await command.AddParameter("@IS_AUTOMATIC", is_auto);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void InsertManufacturer(NpgsqlConnection connection, string title, int founded_year)
@@ -130,7 +130,7 @@ namespace TNKCars.DataAccess.DbHelpers
             var command = await CustomDbCommand.CreateAsync(QueryDefinitions.InsertManufacturer, connection);
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@FOUNDED_YEAR", founded_year);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         // UPDATE
@@ -141,7 +141,7 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@CYL_COUNT", cyl);
             await command.AddParameter("@DISPLACEMENT", displacement);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void UpdateTransmissionWithId(NpgsqlConnection connection, int id, string title, int gear, bool is_auto)
@@ -151,7 +151,7 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@GEAR_COUNT", gear);
             await command.AddParameter("@IS_AUTOMATIC", is_auto);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void UpdateManufacturerWithId(NpgsqlConnection connection, int id, string title, int founded_year)
@@ -160,28 +160,28 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@ID", id);
             await command.AddParameter("@TITLE", title);
             await command.AddParameter("@FOUNDED_YEAR", founded_year);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void DeleteEngineWithId(NpgsqlConnection connection, int id)
         {
             var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteEngineWithId, connection);
             await command.AddParameter("@ID", id);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void DeleteTransmissionWithId(NpgsqlConnection connection, int id)
         {
             var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteTransmissionWithId, connection);
             await command.AddParameter("@ID", id);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
 
         async public static void DeleteManufacturerWithId(NpgsqlConnection connection, int id)
         {
             var command = await CustomDbCommand.CreateAsync(QueryDefinitions.DeleteManufacturerWithId, connection);
             await command.AddParameter("@ID", id);
-            await command.ReaderResult();
+            await command.NonQueryResult();
         }
     }
 }
