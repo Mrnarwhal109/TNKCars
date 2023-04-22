@@ -115,7 +115,7 @@ namespace TNKCars.Client
 
         private void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
         {
-            AddManufacturerView dialog = new AddManufacturerView();
+            AddManufacturerView dialog = new AddManufacturerView(connection);
 
             dialog.Show();
         }
@@ -127,7 +127,7 @@ namespace TNKCars.Client
 
         private void BtnEditManufacturer_Click(object sender, RoutedEventArgs e)
         {
-            EditManufacturerView dialog = new EditManufacturerView();
+            EditManufacturerView dialog = new EditManufacturerView(connection);
 
             dialog.Show();
         }
@@ -143,7 +143,7 @@ namespace TNKCars.Client
 
         private void BtnAddEngine_Click(object sender, RoutedEventArgs e)
         {
-            AddEngineView dialog = new AddEngineView();
+            AddEngineView dialog = new AddEngineView(connection);
 
             dialog.Show();
         }
@@ -155,7 +155,7 @@ namespace TNKCars.Client
 
         private void BtnEditEngine_Click(object sender, RoutedEventArgs e)
         {
-            EditEngineView dialog = new EditEngineView();
+            EditEngineView dialog = new EditEngineView(connection);
 
             dialog.Show();
         }
@@ -171,7 +171,7 @@ namespace TNKCars.Client
 
         private void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
         {
-            AddTransmissionView dialog = new AddTransmissionView();
+            AddTransmissionView dialog = new AddTransmissionView(connection);
 
             dialog.Show();
         }
@@ -183,7 +183,7 @@ namespace TNKCars.Client
 
         private void BtnEditTransmission_Click(object sender, RoutedEventArgs e)
         {
-            EditTransmissionView dialog = new EditTransmissionView();
+            EditTransmissionView dialog = new EditTransmissionView(connection);
 
             dialog.Show();
         }
