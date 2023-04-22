@@ -23,5 +23,10 @@ namespace TNKCars.DataAccess
             FoundedYear = founded_year;
             AddedAt = added_at;
         }
+
+        public override string ToString()
+        {
+            return Title.ToString();
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace TNKCars.DataAccess
             Displacement = displacement;
             AddedAt = added_at;
         }
+
+        public override string ToString()
+        {
+            return Title.ToString();
+        }
     }
 }

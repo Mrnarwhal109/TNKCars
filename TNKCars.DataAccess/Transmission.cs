@@ -26,5 +26,10 @@ namespace TNKCars.DataAccess
             IsAutomatic = is_automatic;
             AddedAt = added_at;
         }
+
+        public override string ToString()
+        {
+            return Title.ToString();
+        }
     }
 }
