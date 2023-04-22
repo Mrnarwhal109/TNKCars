@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace TNKCars.Client
     /// </summary>
     public partial class AddManufacturerView : Window
     {
-        public AddManufacturerView()
+        NpgsqlConnection connection;
+
+        public AddManufacturerView(NpgsqlConnection connect)
         {
             InitializeComponent();
+            connection = connect;
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
