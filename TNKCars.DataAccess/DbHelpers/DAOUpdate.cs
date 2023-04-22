@@ -10,7 +10,7 @@ namespace TNKCars.DataAccess.DbHelpers
             var command = await CustomDbCommand.CreateAsync(QueryDefinitions.UpdateEngineWithId, connection);
             await command.AddParameter("@ID", id);
             await command.AddParameter("@TITLE", title);
-            await command.AddParameter("@CYL_COUNT", cyl);
+            await command.AddParameter("@CYLINDER_COUNT", cyl);
             await command.AddParameter("@DISPLACEMENT", displacement);
             await command.NonQueryResult();
         }

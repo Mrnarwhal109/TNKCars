@@ -31,7 +31,7 @@ namespace TNKCars.Client
             int cylinderCount = Convert.ToInt32(txtCylinderCount.Text);
             double displacement = Convert.ToDouble(txtDisplacement.Text);
 
-            var inserted = await DAOInsert.InsertRetrieveEngine(connection, title, cylinderCount, displacement);
+            await DAOInsert.InsertEngine(connection, title, cylinderCount, displacement);
         }
     }
 }
