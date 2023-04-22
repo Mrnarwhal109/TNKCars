@@ -25,19 +25,19 @@ namespace TNKCars.Client
     
     public partial class MainWindow : Window
     {
-        List<DataAccess.Car> cars = new List<DataAccess.Car>();
-        
+        NpgsqlConnection connection;
 
         public MainWindow()
         {
             InitializeComponent();
-
+            Load();
         }
 
-        //private async void EstablishConnection()
-        //{
-        //    connection = await DatabaseUtility.EstablishConnection();
-        //}
+        public async void Load()
+        {
+            connection = await DatabaseUtility.EstablishConnection();
+            SetAllCarDataGrid();
+        }
 
         #region Main Menu Button Clicks
         private void BtnCars_Click(object sender, RoutedEventArgs e)
@@ -46,7 +46,7 @@ namespace TNKCars.Client
 
             CarsMenu.Visibility = Visibility.Visible;
 
-            SetCarHeaderDG();
+            SetCarDataGrid();
         }
 
         private void BtnManufacturers_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace TNKCars.Client
 
             ManufacturersMenu.Visibility = Visibility.Visible;
 
-            SetManufacturerHeaderDG();
+            SetManufacturerDataGrid();
         }
 
         private void BtnEngines_Click(object sender, RoutedEventArgs e)
@@ -64,7 +64,7 @@ namespace TNKCars.Client
 
             EnginesMenu.Visibility = Visibility.Visible;
 
-            SetEngineHeaderDG();
+            SetEngineDataGrid();
         }
 
         private void BtnTransmissions_Click(object sender, RoutedEventArgs e)
@@ -73,7 +73,7 @@ namespace TNKCars.Client
 
             TransmissionsMenu.Visibility = Visibility.Visible;
 
-            SetTransmissionHeaderDG();
+            SetTransmissionDataGrid();
         }
         #endregion
 
@@ -83,20 +83,18 @@ namespace TNKCars.Client
             CarsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
-
-            SetEmptyHeaderDG();
         }
 
         private void BtnAddCar_Click(object sender, RoutedEventArgs e) 
         {
-            AddCarView dialog = new AddCarView();
+            AddCarView dialog = new AddCarView(connection);
 
             dialog.Show();
         }
 
         private void BtnEditCar_Click(object sender, RoutedEventArgs e)
         {
-            EditCarView dialog = new EditCarView();
+            EditCarView dialog = new EditCarView(connection);
 
             dialog.Show();
         }
@@ -113,8 +111,6 @@ namespace TNKCars.Client
             ManufacturersMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
-
-            SetEmptyHeaderDG();
         }
 
         private void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
@@ -143,8 +139,6 @@ namespace TNKCars.Client
             EnginesMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
-
-            SetEmptyHeaderDG();
         }
 
         private void BtnAddEngine_Click(object sender, RoutedEventArgs e)
@@ -173,8 +167,6 @@ namespace TNKCars.Client
             TransmissionsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
-
-            SetEmptyHeaderDG();
         }
 
         private void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
@@ -197,45 +189,43 @@ namespace TNKCars.Client
         }
         #endregion
 
-        private void SetEmptyHeaderDG()
+        #region Data Grid Setters
+        private async void SetAllCarDataGrid()
         {
-            dgTable.Columns.Clear();
-            //dgTable.ItemsSource = null;
-            dgTable.Items.Refresh();
-        }
-
-        private void SetCarHeaderDG()
-        {
-
-            GetCarData();
-            
-        }
-
-        private async void GetCarData()
-        {
-            var connection = await DatabaseUtility.EstablishConnection();
-            cars = await DAOCars.GetAllCarsWithDetails(connection);
+            List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithDetails(connection);
 
             dgTable.ItemsSource = cars;
         }
 
-        private async void SetManufacturerHeaderDG()
+        private async void SetCarDataGrid()
         {
-            var connection = await DatabaseUtility.EstablishConnection();
-            cars = await DAOCars.GetAllCarsWithoutDetails(connection);
+            List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithoutDetails(connection);
 
             dgTable.ItemsSource = cars;
         }
 
-        private void SetEngineHeaderDG()
+        private async void SetManufacturerDataGrid()
         {
-            
+            List<DataAccess.Manufacturer> manufacturers = await DAOCars.GetAllManufacturers(connection);
+
+            dgTable.ItemsSource = manufacturers;
         }
 
-        private void SetTransmissionHeaderDG()
+        private async void SetEngineDataGrid()
         {
-            
+            List<DataAccess.Engine> engines = await DAOCars.GetAllEngines(connection);
+
+            dgTable.ItemsSource = engines;
         }
+
+        private async void SetTransmissionDataGrid()
+        {
+            List<DataAccess.Transmission> transmissions = await DAOCars.GetAllTransmissions(connection);
+
+            dgTable.ItemsSource = transmissions;
+        }
+        #endregion
+
+
     }
 }
-
