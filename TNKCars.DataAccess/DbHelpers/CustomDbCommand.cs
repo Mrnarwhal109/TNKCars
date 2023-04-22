@@ -1,6 +1,4 @@
 ﻿using Npgsql;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
 
 namespace TNKCars.DataAccess.DbHelpers
 {
@@ -41,6 +39,7 @@ namespace TNKCars.DataAccess.DbHelpers
         {
             var reader = await _command.ExecuteReaderAsync();
             var results = await TableResult.FromReader(reader);
+            await reader.CloseAsync();
             return results;
         }
 

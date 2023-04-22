@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TNKCars.DataAccess
+﻿namespace TNKCars.DataAccess
 {
     public class Engine
     {
@@ -25,11 +19,6 @@ namespace TNKCars.DataAccess
             CylinderCount = cylinder_count;
             Displacement = displacement;
             AddedAt = added_at;
-        }
-
-        public override string ToString()
-        {
-            return Title.ToString();
         }
     }
 }

@@ -1,19 +1,7 @@
 ﻿using Npgsql;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TNKCars.Client;
 using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
@@ -22,7 +10,7 @@ namespace TNKCars.Client
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-    
+
     public partial class MainWindow : Window
     {
         NpgsqlConnection connection;
@@ -30,102 +18,106 @@ namespace TNKCars.Client
         public MainWindow()
         {
             InitializeComponent();
-            Load();
+            Task.Run(
+                async () =>
+                {
+                    await Load();
+                });
         }
 
-        public async void Load()
+        public async Task Load()
         {
             connection = await DatabaseUtility.EstablishConnection();
-            SetAllCarDataGrid();
+            await SetAllCarDataGrid();
         }
 
         #region Main Menu Button Clicks
-        private void BtnCars_Click(object sender, RoutedEventArgs e)
+        private async void BtnCars_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Hidden;
 
             CarsMenu.Visibility = Visibility.Visible;
 
-            SetCarDataGrid();
+            await SetCarDataGrid();
         }
 
-        private void BtnManufacturers_Click(object sender, RoutedEventArgs e)
+        private async void BtnManufacturers_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Hidden;
 
             ManufacturersMenu.Visibility = Visibility.Visible;
 
-            SetManufacturerDataGrid();
+            await SetManufacturerDataGrid();
         }
 
-        private void BtnEngines_Click(object sender, RoutedEventArgs e)
+        private async void BtnEngines_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Hidden;
 
             EnginesMenu.Visibility = Visibility.Visible;
 
-            SetEngineDataGrid();
+            await SetEngineDataGrid();
         }
 
-        private void BtnTransmissions_Click(object sender, RoutedEventArgs e)
+        private async void BtnTransmissions_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Hidden;
 
             TransmissionsMenu.Visibility = Visibility.Visible;
 
-            SetTransmissionDataGrid();
+            await SetTransmissionDataGrid();
         }
         #endregion
 
         #region Cars Button Clicks
-        private void BtnCarsBack_Click(object sender, RoutedEventArgs e)
+        private async void BtnCarsBack_Click(object sender, RoutedEventArgs e)
         {
             CarsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
         }
 
-        private void BtnAddCar_Click(object sender, RoutedEventArgs e) 
+        private async void BtnAddCar_Click(object sender, RoutedEventArgs e) 
         {
             AddCarView dialog = new AddCarView(connection);
 
             dialog.Show();
         }
 
-        private void BtnEditCar_Click(object sender, RoutedEventArgs e)
+        private async void BtnEditCar_Click(object sender, RoutedEventArgs e)
         {
             EditCarView dialog = new EditCarView(connection);
 
             dialog.Show();
         }
 
-        private void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
         {
 
         }
         #endregion
 
         #region Manufacturers Button Clicks
-        private void BtnManufacturersBack_Click(object sender, RoutedEventArgs e)
+        private async void BtnManufacturersBack_Click(object sender, RoutedEventArgs e)
         {
             ManufacturersMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
         }
 
-        private void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
+        private async void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
         {
             AddManufacturerView dialog = new AddManufacturerView(connection);
 
             dialog.Show();
         }
 
-        private void BtnRemoveManufacturer_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveManufacturer_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnEditManufacturer_Click(object sender, RoutedEventArgs e)
+        private async void BtnEditManufacturer_Click(object sender, RoutedEventArgs e)
         {
             EditManufacturerView dialog = new EditManufacturerView(connection);
 
@@ -134,26 +126,26 @@ namespace TNKCars.Client
         #endregion
 
         #region Engines Button Clicks
-        private void BtnEngineBack_Click(object sender, RoutedEventArgs e)
+        private async void BtnEngineBack_Click(object sender, RoutedEventArgs e)
         {
             EnginesMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
         }
 
-        private void BtnAddEngine_Click(object sender, RoutedEventArgs e)
+        private async void BtnAddEngine_Click(object sender, RoutedEventArgs e)
         {
             AddEngineView dialog = new AddEngineView(connection);
 
             dialog.Show();
         }
 
-        private void BtnRemoveEngine_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveEngine_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnEditEngine_Click(object sender, RoutedEventArgs e)
+        private async void BtnEditEngine_Click(object sender, RoutedEventArgs e)
         {
             EditEngineView dialog = new EditEngineView(connection);
 
@@ -162,26 +154,26 @@ namespace TNKCars.Client
         #endregion
 
         #region Transmissions Button Clicks
-        private void BtnTransmissionBack_Click(object sender, RoutedEventArgs e)
+        private async void BtnTransmissionBack_Click(object sender, RoutedEventArgs e)
         {
             TransmissionsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
         }
 
-        private void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
+        private async void BtnAddTransmission_Click(object sender, RoutedEventArgs e)
         {
             AddTransmissionView dialog = new AddTransmissionView(connection);
 
             dialog.Show();
         }
 
-        private void BtnRemoveTransmission_Click(object sender, RoutedEventArgs e)
+        private async void BtnRemoveTransmission_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnEditTransmission_Click(object sender, RoutedEventArgs e)
+        private async void BtnEditTransmission_Click(object sender, RoutedEventArgs e)
         {
             EditTransmissionView dialog = new EditTransmissionView(connection);
 
@@ -190,35 +182,35 @@ namespace TNKCars.Client
         #endregion
 
         #region Data Grid Setters
-        private async void SetAllCarDataGrid()
+        private async Task SetAllCarDataGrid()
         {
             List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithDetails(connection);
 
             dgTable.ItemsSource = cars;
         }
 
-        private async void SetCarDataGrid()
+        private async Task SetCarDataGrid()
         {
             List<DataAccess.Car> cars = await DAOCars.GetAllCarsWithoutDetails(connection);
 
             dgTable.ItemsSource = cars;
         }
 
-        private async void SetManufacturerDataGrid()
+        private async Task SetManufacturerDataGrid()
         {
             List<DataAccess.Manufacturer> manufacturers = await DAOCars.GetAllManufacturers(connection);
 
             dgTable.ItemsSource = manufacturers;
         }
 
-        private async void SetEngineDataGrid()
+        private async Task SetEngineDataGrid()
         {
             List<DataAccess.Engine> engines = await DAOCars.GetAllEngines(connection);
 
             dgTable.ItemsSource = engines;
         }
 
-        private async void SetTransmissionDataGrid()
+        private async Task SetTransmissionDataGrid()
         {
             List<DataAccess.Transmission> transmissions = await DAOCars.GetAllTransmissions(connection);
 

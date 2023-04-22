@@ -1,19 +1,7 @@
 ﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using TNKCars.DataAccess.DbHelpers;
 
 namespace TNKCars.Client
 {
@@ -32,13 +20,7 @@ namespace TNKCars.Client
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = IsNumsOnly(e.Text);
-        }
-
-        private bool IsNumsOnly(string text)
-        {
-            Regex numsOnly = new Regex("[^0-9]+");
-            return numsOnly.IsMatch(text);
+            e.Handled = TextHelpers.IsNumsOnly(e.Text);
         }
 
         private async void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -46,25 +28,19 @@ namespace TNKCars.Client
             //await Task.Run(() => DAOCars.UpdateCar(connection, txtTitle.Text, Convert.ToInt32(txtPrice.Text), Convert.ToInt32(txtSeriesYear.Text), Convert.ToInt32(txtHorsePower.Text)))
         }
 
-        private async void SetManufacturerComboBox()
+        private async Task SetManufacturerComboBox()
         {
-            List<DataAccess.Manufacturer> manufacturers = await DAOCars.GetAllManufacturers(connection);
-
-            cmbManufacturer.ItemsSource = manufacturers;
+            await ComboBoxDataHelpers.FillComboBoxWithManufacturers(connection, cmbManufacturer);
         }
 
-        private async void SetEngineComboBox()
+        private async Task SetEngineComboBox()
         {
-            List<DataAccess.Engine> engines = await DAOCars.GetAllEngines(connection);
-
-            cmbEngine.ItemsSource = engines;
+            await ComboBoxDataHelpers.FillComboBoxWithEngines(connection, cmbEngine);
         }
 
-        private async void GetTransmissions()
+        private async Task GetTransmissions()
         {
-            List<DataAccess.Transmission> transmissions = await DAOCars.GetAllTransmissions(connection);
-
-            cmbTransmission.ItemsSource = transmissions;
+            await ComboBoxDataHelpers.FillComboBoxWithTransmissions(connection, cmbEngine);
         }
     }
 }

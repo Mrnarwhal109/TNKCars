@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TNKCars.DataAccess
+﻿namespace TNKCars.DataAccess
 {
     public class Manufacturer
     {
@@ -22,11 +16,6 @@ namespace TNKCars.DataAccess
             Title = title;
             FoundedYear = founded_year;
             AddedAt = added_at;
-        }
-
-        public override string ToString()
-        {
-            return Title.ToString();
         }
     }
 }
