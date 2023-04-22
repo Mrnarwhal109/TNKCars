@@ -30,5 +30,12 @@ namespace TNKCars.DataAccess.DbHelpers
             await command.AddParameter("@ID", id);
             await command.NonQueryResult();
         }
+
+        async public static Task RemoveCarsFromParents(NpgsqlConnection connection, int id)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.RemoveCarsFromParents, connection);
+            await command.AddParameter("@ID", id);
+            await command.NonQueryResult();
+        }
     }
 }

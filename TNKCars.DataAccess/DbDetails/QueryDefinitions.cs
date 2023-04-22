@@ -177,6 +177,11 @@
             where id in (select car_id from main);
         ";
 
+        internal static readonly string RemoveCarsFromParents = @"
+            DELETE FROM cars
+            WHERE id = @ID;
+        ";
+
         internal static readonly string AddCarUsingChilds = @"
             with main as (
 	            INSERT INTO cars(title, price, series_year, horsepower)

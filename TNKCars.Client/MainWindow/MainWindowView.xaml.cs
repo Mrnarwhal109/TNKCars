@@ -98,6 +98,10 @@ namespace TNKCars.Client
 
         private async void BtnRemoveCar_Click(object sender, RoutedEventArgs e)
         {
+            var selectedInGrid = dgTable.SelectedItem as Car;
+            if (selectedInGrid == null) { return; }
+
+            await DAODelete.RemoveCarsFromParents(connection, selectedInGrid.Id);
             await SetCarDataGrid();
         }
         #endregion
