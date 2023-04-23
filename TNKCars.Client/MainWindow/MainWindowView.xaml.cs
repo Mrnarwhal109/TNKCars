@@ -43,7 +43,7 @@ namespace TNKCars.Client
 
             CarsMenu.Visibility = Visibility.Visible;
 
-            await SetAllCarDataGrid();
+            await SetCarDataGrid();
         }
 
         private async void BtnManufacturers_Click(object sender, RoutedEventArgs e)
@@ -80,6 +80,8 @@ namespace TNKCars.Client
             CarsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            await SetAllCarDataGrid();
         }
 
         private async void BtnAddCar_Click(object sender, RoutedEventArgs e) 
@@ -112,6 +114,8 @@ namespace TNKCars.Client
             ManufacturersMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            await SetAllCarDataGrid();
         }
 
         private async void BtnAddManufacturers_Click(object sender, RoutedEventArgs e)
@@ -147,6 +151,8 @@ namespace TNKCars.Client
             EnginesMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            await SetAllCarDataGrid();
         }
 
         private async void BtnAddEngine_Click(object sender, RoutedEventArgs e)
@@ -182,6 +188,8 @@ namespace TNKCars.Client
             TransmissionsMenu.Visibility = Visibility.Hidden;
 
             MainMenu.Visibility = Visibility.Visible;
+
+            await SetAllCarDataGrid();
         }
 
         private async void BtnAddTransmission_Click(object sender, RoutedEventArgs e)

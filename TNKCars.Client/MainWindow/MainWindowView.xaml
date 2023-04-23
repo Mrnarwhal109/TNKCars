@@ -34,7 +34,7 @@
                   VerticalAlignment="Stretch" 
                   Background="#2C2C2C"  
                   BorderBrush="#202020"
-                  
+                  IsReadOnly="True"
                   >
             <!--<DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
