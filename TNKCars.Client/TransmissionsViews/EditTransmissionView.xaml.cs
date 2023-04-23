@@ -24,6 +24,7 @@ namespace TNKCars.Client
             // If there was more time, these would all be set with databinding
             txtTitle.Text = _focusedTransmission.Title;
             txtGearCount.Text = _focusedTransmission.GearCount.ToString();
+            cmbAutomatic.IsChecked = (bool)_focusedTransmission.IsAutomatic;
         }
 
         private void TextBoxNumbersOnly(object sender, TextCompositionEventArgs e)
@@ -35,8 +36,8 @@ namespace TNKCars.Client
         {
             string title = txtTitle.Text;
             int gears = Convert.ToInt32(txtGearCount.Text);
-            bool is_auto = true;
-            await DAOUpdate.UpdateTransmissionWithId(connection, _focusedTransmission.Id, title, gears, is_auto);
+            bool isAuto = (bool)cmbAutomatic.IsChecked;
+            await DAOUpdate.UpdateTransmissionWithId(connection, _focusedTransmission.Id, title, gears, isAuto);
         }
     }
 }
