@@ -43,7 +43,7 @@ namespace TNKCars.Client
 
             CarsMenu.Visibility = Visibility.Visible;
 
-            await SetCarDataGrid();
+            await SetAllCarDataGrid();
         }
 
         private async void BtnManufacturers_Click(object sender, RoutedEventArgs e)

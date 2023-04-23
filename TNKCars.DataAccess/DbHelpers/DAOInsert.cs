@@ -122,5 +122,20 @@ namespace TNKCars.DataAccess.DbHelpers
 
             return manuInserted;
         }
+
+        async public static Task<Car> AddCarUsingChilds(NpgsqlConnection connection, string title, int price, int series_year, int horsepower, int MANU_ID, int ENG_ID, int TRAN_ID)
+        {
+            var command = await CustomDbCommand.CreateAsync(QueryDefinitions.AddCarUsingChilds, connection);
+            await command.AddParameter("@TITLE", title);
+            await command.AddParameter("@PRICE", price);
+            await command.AddParameter("@SERIES_YEAR", series_year);
+            await command.AddParameter("@HORSEPOWER", horsepower);
+            await command.AddParameter("@MANU_ID", MANU_ID);
+            await command.AddParameter("@ENG_ID", ENG_ID);
+            await command.AddParameter("@TRAN_ID", TRAN_ID);
+            await command.NonQueryResult();
+
+            return null;
+        }
     }
 }

@@ -123,20 +123,19 @@
                   Grid.Row="2"
                   Width="200"
                   Margin="5 5 0 10"
-                  Style="{StaticResource ComboBoxTheme}"/>
+                  />
         <ComboBox Name="cmbEngine"
                   Grid.Column="4"
                   Grid.Row="4"
                   Width="200"
                   Margin="5 5 0 10"
-                  Style="{StaticResource ComboBoxTheme}"
                   />
         <ComboBox Name="cmbTransmission"
                   Grid.Column="4"
                   Grid.Row="6"
                   Width="200"
                   Margin="5 5 0 10"
-                  Style="{StaticResource ComboBoxTheme}"/>
+                  />
         
         <!-- Buttons -->
         <Button Name="btnAdd"

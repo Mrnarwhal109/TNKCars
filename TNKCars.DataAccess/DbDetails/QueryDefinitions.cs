@@ -89,7 +89,8 @@
 
         internal static readonly string InsertCar = @"
             INSERT INTO cars(title, price, series_year, horsepower)
-            VALUES(@TITLE, @PRICE, @SERIES_YEAR, @HORSEPOWER);
+            VALUES(@TITLE, @PRICE, @SERIES_YEAR, @HORSEPOWER)
+            RETURNING id;
         ";
 
         internal static readonly string InsertEngine = @"
@@ -185,7 +186,7 @@
         internal static readonly string AddCarUsingChilds = @"
             with main as (
 	            INSERT INTO cars(title, price, series_year, horsepower)
-	            VALUES(@TITLE, @PRICE, @SERIES_YEAR, @HORSEPOWER);
+	            VALUES(@TITLE, @PRICE, @SERIES_YEAR, @HORSEPOWER)
 	            RETURNING id
             ),
             car_manufacturers as (

@@ -28,7 +28,7 @@ namespace TNKCars.Client
         {
             string title = txtTitle.Text;
             int gears = Convert.ToInt32(txtGearCount.Text);
-            bool isAuto = true;
+            bool isAuto = (bool)cmbAutomatic.IsChecked;
 
             await DAOInsert.InsertTransmission(connection, title, gears, isAuto);
         }

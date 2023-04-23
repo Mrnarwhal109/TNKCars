@@ -39,7 +39,7 @@
                Grid.ColumnSpan="2"
                Style="{StaticResource LabelTheme}"/>
         <Label Content="Automatic"
-               Grid.Column="1"
+               Grid.Column="2"
                Grid.Row="5"
                Grid.ColumnSpan="2"
                Style="{StaticResource LabelTheme}"/>
@@ -59,12 +59,12 @@
                  Margin="5 5 0 10"
                  Style="{StaticResource TextBoxTheme}"
                  PreviewTextInput="TextBoxNumbersOnly"/>
-        <ComboBox Name="cmbAutomatic"
+        <CheckBox Name="cmbAutomatic"
                  Grid.Column="1"
-                 Grid.Row="6"
+                 Grid.Row="5"
                  Grid.ColumnSpan="3"
-                 Margin="5 5 0 10"
-                 Style="{StaticResource ComboBoxTheme}"/>
+                 Margin="5 12 0 10"
+                 />
 
         <!-- Buttons -->
         <Button Name="btnAdd"
