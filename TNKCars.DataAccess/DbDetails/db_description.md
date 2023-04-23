@@ -86,3 +86,19 @@ This foreign key makes it so that a car_transmissions entry cannot exist if its 
 This foreign key is given ON DELETE CASCADE, which means that when a row in the transmissions table is deleted, all rows in car_transmissions that have that transmission's
 primary key as their transmission_id will be deleted automatically.
 An example of a row in the car_transmissions table is { car_id = 3, transmission_id = 3 }.
+
+Functional Dependencies
+
+cars.id -> { cars.id, cars.title, cars.price, cars.series_year, cars.horsepower, cars.added_at }
+
+manufacturers.id -> { manufacturers.id, manufacturers.title, manufacturers.founded_year, manufacturers.added_at }
+
+engines.id -> { engines.id, engines.title, engines.cylinder_count, engines.displacement, engines.added_at }
+
+transmissions.id -> { transmissions.id, transmissions.title, transmissions.gear_count, transmissions.is_automatic, transmissions.added_at }
+
+(car_manufacturers.car_id, car_manufacturers.manufacturer_id) -> { car_manufacturers.car_id, car_manufacturers.manufacturer_id }
+
+(car_engines.car_id, car_engines.engine_id) -> { car_engines.car_id, car_engines.engine_id }
+
+(car_transmissions.car_id, car_transmissions.transmission_id) -> { car_transmissions.car_id, car_transmissions.transmission_id }
