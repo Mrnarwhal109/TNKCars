@@ -105,12 +105,12 @@
                          FontSize="15"
                          Click="BtnRemoveCar_Click"/>
 
-            <RadioButton Content="Edit Car"
+            <!--<RadioButton Content="Edit Car"
                          Style="{StaticResource NavigationButtonTheme}"
                          Height="50"
                          Foreground="#969696"
                          FontSize="15"
-                         Click="BtnEditCar_Click"/>
+                         Click="BtnEditCar_Click"/>-->
         </StackPanel>
 
         <StackPanel x:Name="ManufacturersMenu" Orientation="Vertical" Grid.Column="0" Grid.Row="2" Visibility="Hidden">
