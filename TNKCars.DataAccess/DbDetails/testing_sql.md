@@ -1,4 +1,4 @@
-For testing only
+-- This file is for testing only. It is not relevant to project or assignment files.
 
 DROP TABLE car_transmissions;
 DROP TABLE car_engines;
