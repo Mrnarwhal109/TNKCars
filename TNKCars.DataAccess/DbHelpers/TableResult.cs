@@ -10,8 +10,7 @@ namespace TNKCars.DataAccess.DbHelpers
         {
             Data = new List<List<object>>();
         }
-
-        // WIP
+       
         public static async Task<TableResult> FromReader(NpgsqlDataReader reader)
         {
             TableResult result = new TableResult();
