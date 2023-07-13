@@ -7,4 +7,3 @@ Jonathan Nguyen: jonathanbnguyen
 Carolyn Tran: itslyn
 
 Repository: https://github.com/Mrnarwhal109/TNKCars
-Demo: https://youtu.be/brVG47u-aUI
